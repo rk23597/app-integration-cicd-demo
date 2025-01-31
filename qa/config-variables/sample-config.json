@@ -1,0 +1,5 @@
+{
+	"`CONFIG_CONN_NAME`": "projects/apigee-ai/locations/us-east1/connections/pubsub",
+	"`CONFIG_TOPIC`": "projects/apigee-ai/topics/mytopic",
+	"`CONFIG_URL`": "https://httpbin.org/get"
+}
