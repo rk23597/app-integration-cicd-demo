@@ -18,7 +18,7 @@ customActions:
 - name: render-sample-integration
   containers:
   - name: render
-    image: us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:0.81.3
+    image: us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:v0.81.3
     command: ['sh']
     args:
       - '-c'
@@ -27,7 +27,7 @@ customActions:
 - name: deploy-sample-integration
   containers:
   - name: deploy
-    image: us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:0.81.3
+    image: us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:v0.81.3
     command: ['sh']
     args:
       - '-c'
