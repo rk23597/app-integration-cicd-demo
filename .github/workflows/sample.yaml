@@ -20,10 +20,19 @@ name: apply-sample-action
 permissions: read-all
 
 # Controls when the workflow will run
-on: push
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose an environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - qa
 
 env:
-  ENVIRONMENT: 'dev'
   PROJECT_ID: ${{ vars.PROJECT_ID }}
   REGION: ${{ vars.REGION }}
   WORKLOAD_IDENTITY_PROVIDER_NAME: ${{ vars.PROVIDER_NAME }}
@@ -62,4 +71,4 @@ jobs:
         id: 'publish-integration'
         uses: docker://us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:0.81.3 #pin to version of choice
         with:
-          args: integrations apply --env=${{ env.ENVIRONMENT}} --folder=. --userlabel=${{ steps.calc-vars.outputs.SHORT_SHA }} --wait=true --proj=${{ env.PROJECT_ID }} --reg=${{ env.REGION }} --token ${{ steps.gcp-auth.outputs.access_token }} --run-tests=true
+          args: integrations apply --env=${{ github.event.inputs.environment}} --folder=. --userlabel=${{ steps.calc-vars.outputs.SHORT_SHA }} --wait=true --proj=${{ env.PROJECT_ID }} --reg=${{ env.REGION }} --token ${{ steps.gcp-auth.outputs.access_token }} --run-tests=true
