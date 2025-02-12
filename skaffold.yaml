@@ -32,4 +32,4 @@ customActions:
     args:
       - '-c'
       - |-
-        integrationcli integrations apply --env=$CLOUD_DEPLOY_TARGET --reg=$CLOUD_DEPLOY_LOCATION --proj=$APP_INTEGRATION_PROJECT_ID --reg=$APP_INTEGRATION_REGION --cloud-deploy=true --run-tests=true --wait=true --metadata-token
+        integrationcli integrations apply --userlabel=$GIT_SHA --env=$CLOUD_DEPLOY_TARGET --reg=$CLOUD_DEPLOY_LOCATION --proj=$APP_INTEGRATION_PROJECT_ID --reg=$APP_INTEGRATION_REGION --cloud-deploy=true --run-tests=true --wait=true --metadata-token

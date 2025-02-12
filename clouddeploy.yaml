@@ -32,6 +32,7 @@ customTarget:
 deployParameters:
   APP_INTEGRATION_PROJECT_ID: "apigee-ai" #dev Project ID
   APP_INTEGRATION_REGION: "us-east1" #dev region
+  GIT_SHA: "local" # from-param: ${GIT_SHA}
 ---
 
 apiVersion: deploy.cloud.google.com/v1
@@ -43,6 +44,7 @@ customTarget:
 deployParameters:
   APP_INTEGRATION_PROJECT_ID: "bap-amer-coe-demo1" #qa Project ID
   APP_INTEGRATION_REGION: "us-west1" #qa region
+  GIT_SHA: "local" # from-param: ${GIT_SHA}
 ---
 
 apiVersion: deploy.cloud.google.com/v1
@@ -54,6 +56,7 @@ customTarget:
 deployParameters:
   APP_INTEGRATION_PROJECT_ID: "bap-amer-coe-demo1" #prod Project ID
   APP_INTEGRATION_REGION: "us-west1" #prod region
+  GIT_SHA: "local" # from-param: ${GIT_SHA}
 ---
 
 apiVersion: deploy.cloud.google.com/v1
