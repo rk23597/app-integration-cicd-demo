@@ -60,6 +60,6 @@ jobs:
 
       - name: Create and Publish Integration
         id: 'publish-integration'
-        uses: docker://us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:0.81.3 #pin to version of choice
+        uses: docker://us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:0.81.4 #pin to version of choice
         with:
           args: integrations apply --env=${{ env.ENVIRONMENT}} --folder=. --userlabel=${{ steps.calc-vars.outputs.SHORT_SHA }} --run-tests=true --wait=true --proj=${{ env.PROJECT_ID }} --reg=${{ env.REGION }} --token ${{ steps.gcp-auth.outputs.access_token }}

@@ -20,6 +20,7 @@ serialPipeline:
   stages:
   - targetId: dev
   - targetId: qa
+  - targetId: prod
 ---
 
 apiVersion: deploy.cloud.google.com/v1
@@ -29,8 +30,8 @@ metadata:
 customTarget:
   customTargetType: appint-sample-target
 deployParameters:
-  APP_INTEGRATION_PROJECT_ID: "apigee-ai"
-  APP_INTEGRATION_REGION: "us-east1"
+  APP_INTEGRATION_PROJECT_ID: "apigee-ai" #dev Project ID
+  APP_INTEGRATION_REGION: "us-east1" #dev region
 ---
 
 apiVersion: deploy.cloud.google.com/v1
@@ -40,8 +41,19 @@ metadata:
 customTarget:
   customTargetType: appint-sample-target
 deployParameters:
-  APP_INTEGRATION_PROJECT_ID: "bap-amer-coe-demo1"
-  APP_INTEGRATION_REGION: "us-west1"
+  APP_INTEGRATION_PROJECT_ID: "bap-amer-coe-demo1" #qa Project ID
+  APP_INTEGRATION_REGION: "us-west1" #qa region
+---
+
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: prod
+customTarget:
+  customTargetType: appint-sample-target
+deployParameters:
+  APP_INTEGRATION_PROJECT_ID: "bap-amer-coe-demo1" #prod Project ID
+  APP_INTEGRATION_REGION: "us-west1" #prod region
 ---
 
 apiVersion: deploy.cloud.google.com/v1
