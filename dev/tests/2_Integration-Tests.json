@@ -1,5 +1,5 @@
 {
-  "name": "projects/247797169620/locations/asia-south1/integrations/sample/versions/d01e3283-cec4-4a2f-8cd1-65095ed9e1d3/testCases/40a729d2-3c5e-4a6e-922b-3132d272090b",
+  "name": "projects/247797169620/locations/asia-south1/integrations/sample/versions/9eeb976e-bffa-4423-b469-4db4fb82f152/testCases/d84e9857-d4dc-42b1-af7a-b142383cf04e",
   "displayName": "2_Integration-Tests",
   "description": "Integration test cases",
   "triggerId": "api_trigger/sample_API_1",
@@ -71,11 +71,10 @@
       "displayName": "Data Mapping"
     }
   }],
-  "creatorEmail": "rakesh.kumawat@neosalpha.com",
-  "createTime": "2025-04-04T07:00:37.814328Z",
-  "lastModifierEmail": "rakesh.kumawat@neosalpha.com",
-  "updateTime": "2025-04-04T07:00:37.814328Z",
-  "lockHolderEmail": "rakesh.kumawat@neosalpha.com",
+  "creatorEmail": "github-actions@rakesh-project-454906.iam.gserviceaccount.com",
+  "createTime": "2025-04-04T06:58:17.432286Z",
+  "lastModifierEmail": "github-actions@rakesh-project-454906.iam.gserviceaccount.com",
+  "updateTime": "2025-04-04T07:14:00.802752Z",
   "triggerConfig": {
     "label": "API Trigger",
     "startTasks": [{
