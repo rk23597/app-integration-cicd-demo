@@ -1,116 +1,100 @@
 {
-	"description": "Unit test cases",
-	"displayName": "1_Unit-Tests",
-	"name": "projects/78901377646/locations/us-east1/integrations/sample/versions/10723699-c7d7-4182-9c24-81d0b34d6fb4/testCases/c148848d-e3f5-4b37-a810-089ee07c303a",
-	"testInputParameters": [
-		{
-			"dataType": "STRING_VALUE",
-			"defaultValue": {
-				"stringValue": "foo"
-			},
-			"key": "user"
-		}
-	],
-	"testTaskConfigs": [
-		{
-			"assertions": [
-				{
-					"assertionStrategy": "ASSERT_SUCCESSFUL_EXECUTION"
-				}
-			],
-			"mockConfig": {
-				"mockStrategy": "SPECIFIC_MOCK_STRATEGY",
-				"parameters": [
-					{
-						"key": "`Task_1_responseHeader`",
-						"value": {
-							"stringValue": "{\"Content-Type\":\"application/json\"}"
-						}
-					},
-					{
-						"key": "`Task_1_responseBody`",
-						"value": {
-							"stringValue": "{\"headers\":{\"host\":\"mock\",\"user-agent\":\"Google-Cloud-Application-Integration\"},\"method\":\"GET\",\"url\":\"/?user=foo\",\"args\":{\"user\":\"foo\"},\"body\":\"\"}"
-						}
-					},
-					{
-						"key": "`Task_1_responseStatus`",
-						"value": {
-							"stringValue": "200 OK"
-						}
-					}
-				]
-			},
-			"task": "GenericRestV2Task",
-			"taskConfig": {
-				"displayName": "Call REST Endpoint",
-				"nextTasks": [
-					{
-						"taskId": "3"
-					}
-				],
-				"task": "GenericRestV2Task",
-				"taskExecutionStrategy": "WHEN_ALL_SUCCEED",
-				"taskId": "1"
-			},
-			"taskNumber": "1"
-		},
-		{
-			"assertions": [
-				{
-					"assertionStrategy": "ASSERT_SUCCESSFUL_EXECUTION"
-				}
-			],
-			"mockConfig": {
-				"mockStrategy": "NO_MOCK_STRATEGY"
-			},
-			"task": "GenericConnectorTask",
-			"taskConfig": {
-				"displayName": "Publish message",
-				"task": "GenericConnectorTask",
-				"taskExecutionStrategy": "WHEN_ALL_SUCCEED",
-				"taskId": "2"
-			},
-			"taskNumber": "2"
-		},
-		{
-			"assertions": [
-				{
-					"assertionStrategy": "ASSERT_CONDITION",
-					"condition": "$user$ = $userOutput$"
-				}
-			],
-			"mockConfig": {
-				"mockStrategy": "NO_MOCK_STRATEGY"
-			},
-			"task": "FieldMappingTask",
-			"taskConfig": {
-				"displayName": "Data Mapping",
-				"nextTasks": [
-					{
-						"taskId": "2"
-					}
-				],
-				"task": "FieldMappingTask",
-				"taskExecutionStrategy": "WHEN_ALL_SUCCEED",
-				"taskId": "3"
-			},
-			"taskNumber": "3"
-		}
-	],
-	"triggerConfig": {
-		"label": "API Trigger",
-		"properties": {
-			"Trigger name": "sample_API_1"
-		},
-		"startTasks": [
-			{
-				"taskId": "1"
-			}
-		],
-		"triggerId": "api_trigger/sample_API_1",
-		"triggerNumber": "1",
-		"triggerType": "API"
-	},
-	"triggerId": "api_trigger/sample_API_1"
+  "name": "projects/247797169620/locations/asia-south1/integrations/sample/versions/16fd022a-7b06-4429-bbce-7a8122bd45d3/testCases/2b453da8-20db-4820-8ce8-8b40c0c6453f",
+  "displayName": "1_Unit-Tests",
+  "description": "Unit test cases",
+  "triggerId": "api_trigger/sample_API_1",
+  "testInputParameters": [{
+    "key": "user",
+    "dataType": "STRING_VALUE",
+    "defaultValue": {
+      "stringValue": "foo"
+    },
+    "displayName": "user"
+  }],
+  "testTaskConfigs": [{
+    "taskNumber": "1",
+    "mockConfig": {
+      "mockStrategy": "SPECIFIC_MOCK_STRATEGY",
+      "parameters": [{
+        "key": "`Task_1_responseHeader`",
+        "value": {
+          "stringValue": "{\"Content-Type\":\"application/json\"}"
+        }
+      }, {
+        "key": "`Task_1_responseBody`",
+        "value": {
+          "stringValue": "{\"headers\":{\"host\":\"mock\",\"user-agent\":\"Google-Cloud-Application-Integration\"},\"method\":\"GET\",\"url\":\"/?user\u003dfoo\",\"args\":{\"user\":\"foo\"},\"body\":\"\"}"
+        }
+      }, {
+        "key": "`Task_1_responseStatus`",
+        "value": {
+          "stringValue": "200 OK"
+        }
+      }]
+    },
+    "assertions": [{
+      "assertionStrategy": "ASSERT_SUCCESSFUL_EXECUTION"
+    }],
+    "task": "GenericRestV2Task",
+    "taskConfig": {
+      "task": "GenericRestV2Task",
+      "taskId": "1",
+      "nextTasks": [{
+        "taskId": "3"
+      }],
+      "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+      "displayName": "Call REST Endpoint"
+    }
+  }, {
+    "taskNumber": "2",
+    "mockConfig": {
+      "mockStrategy": "NO_MOCK_STRATEGY"
+    },
+    "assertions": [{
+      "assertionStrategy": "ASSERT_SUCCESSFUL_EXECUTION"
+    }],
+    "task": "GenericConnectorTask",
+    "taskConfig": {
+      "task": "GenericConnectorTask",
+      "taskId": "2",
+      "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+      "displayName": "Publish message"
+    }
+  }, {
+    "taskNumber": "3",
+    "mockConfig": {
+      "mockStrategy": "NO_MOCK_STRATEGY"
+    },
+    "assertions": [{
+      "assertionStrategy": "ASSERT_CONDITION",
+      "condition": "$user$ \u003d $userOutput$"
+    }],
+    "task": "FieldMappingTask",
+    "taskConfig": {
+      "task": "FieldMappingTask",
+      "taskId": "3",
+      "nextTasks": [{
+        "taskId": "2"
+      }],
+      "taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+      "displayName": "Data Mapping"
+    }
+  }],
+  "creatorEmail": "github-actions@rakesh-project-454906.iam.gserviceaccount.com",
+  "createTime": "2025-04-04T06:45:30.304860Z",
+  "lastModifierEmail": "github-actions@rakesh-project-454906.iam.gserviceaccount.com",
+  "updateTime": "2025-04-04T06:45:30.304860Z",
+  "lockHolderEmail": "github-actions@rakesh-project-454906.iam.gserviceaccount.com",
+  "triggerConfig": {
+    "label": "API Trigger",
+    "startTasks": [{
+      "taskId": "1"
+    }],
+    "properties": {
+      "Trigger name": "sample_API_1"
+    },
+    "triggerType": "API",
+    "triggerNumber": "1",
+    "triggerId": "api_trigger/sample_API_1"
+  }
 }
