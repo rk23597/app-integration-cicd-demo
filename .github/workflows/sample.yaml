@@ -67,8 +67,21 @@ jobs:
         run: |
           echo "SHORT_SHA=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_OUTPUT
 
-      - name: Create and Publish Integration
-        id: 'publish-integration'
-        uses: docker://us-docker.pkg.dev/appintegration-toolkit/images/integrationcli:0.81.3 #pin to version of choice
-        with:
-          args: integrations apply --env=${{ github.event.inputs.environment}} --folder=. --userlabel=${{ steps.calc-vars.outputs.SHORT_SHA }} --wait=true --proj=${{ env.PROJECT_ID }} --reg=${{ env.REGION }} --token ${{ steps.gcp-auth.outputs.access_token }} --run-tests=true
+      - name: Install integrationcli
+        run: |
+          sudo apt-get update && sudo apt-get install -y curl gettext
+          curl -L https://raw.githubusercontent.com/GoogleCloudPlatform/application-integration-management-toolkit/main/downloadLatest.sh | sh -
+          cp -r /root/.integrationcli/bin ./bin
+          ./bin/integrationcli --version
+
+      - name: Apply Integration
+        run: |
+          ./bin/integrationcli integrations apply \
+            --env=${{ github.event.inputs.environment }} \
+            --folder=. \
+            --userlabel=${{ steps.calc-vars.outputs.SHORT_SHA }} \
+            --wait=true \
+            --proj=${{ env.PROJECT_ID }} \
+            --reg=${{ env.REGION }} \
+            --token ${{ steps.gcp-auth.outputs.access_token }} \
+            --run-tests=true
