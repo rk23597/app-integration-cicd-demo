@@ -71,6 +71,9 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y curl gettext
           curl -L https://raw.githubusercontent.com/GoogleCloudPlatform/application-integration-management-toolkit/main/downloadLatest.sh | sh -
+          integrationcli --version
+          integrationcli --version
+          integrationcli --version
           cp -r /root/.integrationcli/bin ./bin
           ./bin/integrationcli --version
 
